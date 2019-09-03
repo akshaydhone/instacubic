@@ -163,7 +163,7 @@ class _MainScaffoldState extends State<MainScaffold> {
             SizedBox(width: 12.0),
             GestureDetector(
               child: Text(
-                'Instagroot',
+                'InstaCubic',
                 style: TextStyle(
                     fontFamily: 'Billabong',
                     color: Colors.black,
@@ -190,7 +190,7 @@ class _MainScaffoldState extends State<MainScaffold> {
           }),
         ],
       ),
-      body: _buildBody(),
+     // body: _buildBody(),
       bottomNavigationBar: _buildBottomNavigation(),
     );
   }
