@@ -3,12 +3,15 @@ import 'package:flutter/services.dart';
 import 'package:outline_material_icons/outline_material_icons.dart';
 import 'package:instagroot/home_feed_page.dart';
 import 'package:instagroot/ui_utils.dart';
+import 'package:image_picker/image_picker.dart';
+
 
 void main() {
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
       .then((_) {
     runApp(new MyApp());
-  });
+  }
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -131,7 +134,7 @@ class _MainScaffoldState extends State<MainScaffold> {
     ];
     final bottomNaivgationItems = List.generate(5, (int i) {
       final iconData =
-          _tabSelectedIndex == i ? selecteedIcons[i] : unselectedIcons[i];
+      _tabSelectedIndex == i ? selecteedIcons[i] : unselectedIcons[i];
       return BottomNavigationBarItem(icon: Icon(iconData), title: Container());
     }).toList();
 
@@ -157,7 +160,7 @@ class _MainScaffoldState extends State<MainScaffold> {
             Builder(builder: (BuildContext context) {
               return GestureDetector(
                 child: Icon(OMIcons.cameraAlt, color: Colors.black, size: 32.0),
-                onTap: () => showSnackbar(context, 'Add Photo'),
+                onTap: () =>  _optionsDialogBox(),
               );
             }),
             SizedBox(width: 12.0),
@@ -180,18 +183,53 @@ class _MainScaffoldState extends State<MainScaffold> {
               icon: Icon(OMIcons.liveTv),
               onPressed: () => showSnackbar(context, 'Live TV'),
             );
-          }),
+          }
+          ),
           Builder(builder: (BuildContext context) {
             return IconButton(
               color: Colors.black,
               icon: Icon(OMIcons.nearMe),
               onPressed: () => showSnackbar(context, 'My Messages'),
             );
-          }),
+          }
+          ),
         ],
       ),
-     // body: _buildBody(),
+       body: _buildBody(),
       bottomNavigationBar: _buildBottomNavigation(),
     );
   }
+
+
+
+  Future<void> _optionsDialogBox() {
+    return showDialog(context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            content: new SingleChildScrollView(
+              child: new ListBody(
+                children: <Widget>[
+                  GestureDetector(
+                    child: new Text('Take a picture'),
+                   // onTap: openCamera,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.all(8.0),
+                  ),
+                  GestureDetector(
+                    child: new Text('Select from gallery'),
+                    //onTap: openGallery,
+                  ),
+                ],
+              ),
+            ),
+          );
+        }
+        );
+  }
+
+
+
+
+
 }

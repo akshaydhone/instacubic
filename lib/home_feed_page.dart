@@ -84,7 +84,7 @@ class StoriesBarWidget extends StatelessWidget {
 
   void _onUserStoryTap(BuildContext context, int i) {
     final message =
-        i == 0 ? 'Add to Your Story' : "View ${_users[i].name}'s Story";
+    i == 0 ? 'Add to Your Story' : "View ${_users[i].name}'s Story";
     showSnackbar(context, message);
   }
 
